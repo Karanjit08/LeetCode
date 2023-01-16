@@ -8,14 +8,18 @@ public:
         while(l<=r)
         {
             mid = l + (r-l)/2;
-            if(mid*mid>x)
+            if(mid*mid==x)
+            {
+                return mid;
+            }
+            else if(mid*mid>x)
             {
                 r = mid-1;
             }
-            else
+            else if(mid*mid<x)
             {
                 ans = mid;
-                l++;
+                l = mid+1;
             }
         }
         return ans;
