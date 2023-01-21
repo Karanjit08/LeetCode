@@ -1,9 +1,9 @@
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
+        int left=0,right,mid;
         int n=nums.size();
-        int left=0,right=n-1;
-        int mid;
+        right = n-1;
         while(left<=right)
         {
             mid = left + (right-left)/2;
@@ -21,7 +21,6 @@ public:
             }
         }
         return -1;
-        
         
     }
 };
