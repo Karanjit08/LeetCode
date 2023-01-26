@@ -1,13 +1,12 @@
 class Solution {
 public:
-    int findPivot(vector<int>& nums)
+    int pivotIndex(vector<int>& nums, int n)
     {
-        int left=0,right,mid,ans;
-        int n=nums.size();
-        right = n-1;
+        int left=0,right=n-1;
+        int mid;
         while(left<right)
         {
-            mid = left+(right-left)/2;
+            mid = left + (right-left)/2;
             if(nums[mid]>=nums[0])
             {
                 left = mid+1;
@@ -17,11 +16,11 @@ public:
                 right = mid;
             }
         }
-        return left;
+        return right;
     }
-    int binarySearch(vector<int>& nums, int target, int left,int right)
+    int binarySearch(vector<int>& nums, int target, int left, int right)
     {
-        int mid;
+        int mid,n=nums.size();
         while(left<=right)
         {
             mid = left + (right-left)/2;
@@ -42,10 +41,10 @@ public:
     }
     
     int search(vector<int>& nums, int target) {
-        int n=nums.size(),ans;
-        int left=0,right=n-1,mid;
-        int pivot = findPivot(nums);
-        if(nums[pivot]<=target && nums[n-1]>=target)
+        int n=nums.size();
+        int pivot = pivotIndex(nums,n);
+        int ans;
+        if(nums[pivot]<=target && target<=nums[n-1])
         {
             ans = binarySearch(nums,target,pivot,n-1);
         }
@@ -54,7 +53,6 @@ public:
             ans = binarySearch(nums,target,0,pivot-1);
         }
         return ans;
-        
         
     }
 };
