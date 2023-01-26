@@ -7,7 +7,7 @@ public:
         m=matrix[0].size();
         for(i=0;i<n;i++)
         {
-            for(j=0;j<i;j++)
+            for(j=i+1;j<m;j++)
             {
                 swap(matrix[i][j],matrix[j][i]);
             }
