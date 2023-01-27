@@ -1,7 +1,9 @@
 class Solution {
 public:
     bool search(vector<int>& nums, int target) {
-        int left=0,right=nums.size()-1,mid;
+        int left,right,mid;
+        int n=nums.size();
+        left=0,right = n-1;
         while(left<=right)
         {
             mid = left + (right-left)/2;
@@ -9,14 +11,14 @@ public:
             {
                 return true;
             }
-            if(nums[mid]==nums[left] && nums[mid]==nums[right])
+            else if(nums[mid]==nums[left] && nums[mid]==nums[right])
             {
                 left++;
                 right--;
             }
-            else if(nums[left]<=nums[mid])
+            else if(nums[mid]>=nums[left])
             {
-                if(target>=nums[left] && target<=nums[mid])
+                if(nums[left]<=target && target<=nums[mid])
                 {
                     right = mid-1;
                 }
@@ -27,9 +29,9 @@ public:
             }
             else
             {
-                if(target>=nums[mid] && target<=nums[right])
+                if(nums[mid]<=target && target<=nums[right])
                 {
-                    left= mid+1;
+                    left = mid+1;
                 }
                 else
                 {
