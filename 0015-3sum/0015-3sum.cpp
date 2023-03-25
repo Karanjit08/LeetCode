@@ -1,49 +1,53 @@
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
-        int i,n=nums.size();
-        sort(nums.begin(),nums.end());
+        int i,left,right;
+        int n=nums.size();
+        int a,temp;
+        int sum;
         vector<vector<int>>ans;
+        sort(nums.begin(),nums.end());
         for(i=0;i<n;i++)
         {
-            int a = nums[i];
-            int t = -a;
-            int s = i+1;
-            int e = n-1;
-            while(s<e)
+            a = nums[i];
+            temp = -a;
+            left = i+1,right=n-1;
+            while(left<right)
             {
-               if(nums[s]+nums[e]==t)
-               {
-                   vector<int>temp;
-                   temp.push_back(a);
-                   temp.push_back(nums[s]);
-                   temp.push_back(nums[e]);
-                   ans.push_back(temp);
-                   while(s<e && nums[s]==nums[s+1])
-                   {
-                       s++;
-                   }
-                   while(s<e && nums[e]==nums[e-1])
-                   {
-                       e--;
-                   } 
-                   s++;
-                   e--;
-                   
-               }
-               else if(nums[s]+nums[e]>t)
-               {
-                    e--;
-               }
-               else if(nums[s]+nums[e]<t)
-               {
-                    s++;
-               }
+                sum =nums[left]+nums[right];
+                if(sum==temp)
+                {
+                    vector<int>v;
+                    v.push_back(a);
+                    v.push_back(nums[left]);
+                    v.push_back(nums[right]);
+                    ans.push_back(v);
+                    while(left<right && nums[left]==nums[left+1])
+                    {
+                        left++;
+                    
+                    }  
+                    while(left<right && nums[right]==nums[right-1])
+                    {
+                        right--;
+                    }
+                    left++;
+                    right--;
+                }
+                else if(sum<temp)
+                {
+                    left++;
+                }
+                else if(sum>temp)
+                {
+                    right--;
+                }
             }
             while(i+1<n && nums[i]==nums[i+1])
             {
                 i++;
             }
+            
         }
         return ans;
         
