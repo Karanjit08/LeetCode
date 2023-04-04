@@ -1,31 +1,31 @@
 class Solution {
 public:
     void rotate(vector<int>& nums, int k) {
-        int i;
         int n=nums.size();
+        int i;
         k = k%n;
-        int s1=0,e1=n-k-1;
-        int s2=n-k,e2=n-1;
-        while(s1<e1)
+        int left=0,right=n-k-1;
+        int left2 = n-k,right2=n-1;
+        while(left<=right)
         {
-            swap(nums[s1],nums[e1]);
-            s1++;
-            e1--;
+            swap(nums[left],nums[right]);
+            left++;
+            right--;
         }
-        while(s2<e2)
+        while(left2<=right2)
         {
-            swap(nums[s2],nums[e2]);
-            s2++;
-            e2--;
+            swap(nums[left2],nums[right2]);
+            left2++;
+            right2--;
         }
-        int start=0,end=n-1;
-        while(start<end)
+        int s=0,e=n-1;
+        while(s<e)
         {
-            swap(nums[start],nums[end]);
-            start++;
-            end--;
+            swap(nums[s],nums[e]);
+            s++;
+            e--;
         }
         
-        
+           
     }
 };
