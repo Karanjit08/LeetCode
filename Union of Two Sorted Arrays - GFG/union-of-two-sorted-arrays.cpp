@@ -13,20 +13,40 @@ class Solution{
     {
         //Your code here
         //return vector with correct order of elements
-        int i,j;
+        
+        int i=0,j=0;
         set<int>s;
-        for(i=0;i<n;i++)
+        while(i<n && j<m)
+        {
+            if(arr1[i]==arr2[j])
+            {
+                s.insert(arr1[i]);
+                i++;
+                j++;
+            }
+            else if(arr1[i]<arr2[j])
+            {
+                s.insert(arr1[i]);
+                i++;
+            }
+            else if(arr2[j]<arr1[i])
+            {
+                s.insert(arr2[j]);
+                j++;
+            }
+        }
+        while(i<n)
         {
             s.insert(arr1[i]);
+            i++;
         }
-        for(j=0;j<m;j++)
+        while(j<m)
         {
             s.insert(arr2[j]);
+            j++;
         }
         vector<int>ans = {s.begin(),s.end()};
-        sort(ans.begin(),ans.end());
         return ans;
-        
     }
 };
 
