@@ -26,6 +26,7 @@ class Solution
     {
         // Your code here
         int i,j;
+        int flag=0;
         for(i=0;i<n-1;i++)
         {
             for(j=1;j<n;j++)
@@ -33,7 +34,12 @@ class Solution
                 if(arr[j-1]>arr[j])
                 {
                     swap(arr[j-1],arr[j]);
+                    flag=1;
                 }
+            }
+            if(flag==0)
+            {
+                break;
             }
         }
     }
