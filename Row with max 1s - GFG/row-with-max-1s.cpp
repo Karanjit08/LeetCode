@@ -9,19 +9,29 @@ public:
 	int rowWithMax1s(vector<vector<int> > arr, int n, int m) {
 	    // code here
 	    int i,j;
+	    int mid;
 	    int count;
 	    int countMax=0;
+	    int ans=m;
 	    int index=-1;
 	    for(i=0;i<n;i++)
 	    {
 	        count=0;
-	        for(j=0;j<m;j++)
+	        int left=0,right=m-1;
+	        while(left<=right)
 	        {
-	            if(arr[i][j]==1)
+	            mid = left + (right-left)/2;
+	            if(arr[i][mid]==1)
 	            {
-	                count++;
+	                ans = mid;
+	                right = mid-1;
+	            }
+	            else if(arr[i][mid]<1)
+	            {
+	                left = mid+1;
 	            }
 	        }
+	        count = m-ans;
 	        if(count>countMax)
 	        {
 	            countMax = count;
