@@ -11,8 +11,10 @@ public:
         }
         for(i=0;i<stones.length();i++)
         {
-            char ch = stones[i];
-            count = count + m.count(ch);
+            if(m.count(stones[i])==1)
+            {
+                count++;
+            }
         }
         return count;
         
