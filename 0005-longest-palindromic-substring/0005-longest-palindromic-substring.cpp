@@ -21,7 +21,7 @@ public:
                 low--;
                 high++;
             }
-            //EVEN CASE
+            // EVEN CASE
             low = i;
             high = i-1;
             while(low>=0 && high<n && s[low]==s[high])
