@@ -12,7 +12,7 @@ public:
     
     
     int guessNumber(int n) {
-        int mid,left=1,right=n;
+        int mid,left=0,right=n;
         int res;
         int ans;
         while(left<right){
