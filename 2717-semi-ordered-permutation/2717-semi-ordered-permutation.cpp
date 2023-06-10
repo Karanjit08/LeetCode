@@ -18,11 +18,11 @@ public:
             }
             for(i=index;i>0;i--)
             {
-                // nums[i] = nums[i-1];
-                swap(nums[i],nums[i-1]);
+                nums[i] = nums[i-1];
+                // swap(nums[i],nums[i-1]);
                 count++;
             }
-            // nums[0]=1;
+            nums[0]=1;
         }
         
         if(nums[n-1]!=n)
