@@ -22,7 +22,7 @@ class Solution
 {
     public:
     
-    void funcSort(int *arr, int n){
+    void funcSort(int arr[], int n){
         if(n==1 || n==0){
             return ;
         }
