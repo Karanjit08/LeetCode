@@ -21,27 +21,26 @@ void swap(int *xp, int *yp)
 class Solution
 {
     public:
+    
+    void funcSort(int *arr, int n){
+        if(n==1 || n==0){
+            return ;
+        }
+        else{
+            for(int i=0;i<n-1;i++){
+                if(arr[i]>arr[i+1]){
+                    swap(arr[i],arr[i+1]);
+                }
+            }
+            funcSort(arr,n-1);
+        }
+    }
     //Function to sort the array using bubble sort algorithm.
     void bubbleSort(int arr[], int n)
     {
         // Your code here
-        int i,j;
-        int flag=0;
-        for(i=0;i<n-1;i++)
-        {
-            for(j=1;j<n;j++)
-            {
-                if(arr[j-1]>arr[j])
-                {
-                    swap(arr[j-1],arr[j]);
-                    flag=1;
-                }
-            }
-            if(flag==0)
-            {
-                break;
-            }
-        }
+        
+        funcSort(arr,n);
     }
 };
 
