@@ -9,7 +9,7 @@ public:
             if(n%i==0){
                 k = s.substr(0,i);
                 ans = "";
-                for(int j=0;j<n/i;j++){
+                for(int j=1;j<=n/i;j++){
                     ans+=k;
                 }
                 if(ans==s){
