@@ -6,9 +6,12 @@ public:
         for(i=0;i<n;i++){
             nums[i] = nums[i]%k;
         }
-        nums[0] = nums[0] + 0;
+        // nums[0] = nums[0] + 0;
         for(i=1;i<n;i++){
-            nums[i] = (nums[i] + nums[i-1])%k;
+            nums[i] = nums[i] + nums[i-1];
+        }
+        for(i=1;i<n;i++){
+            nums[i] = nums[i]%k;
         }
         
         unordered_map<int,int>m;
@@ -23,8 +26,8 @@ public:
                 }
             }
             else{
-                // m[nums[i]] = i;
-                m.insert({nums[i],i});
+                m[nums[i]] = i;
+                // m.insert({nums[i],i});
             }
         }
         return false;
