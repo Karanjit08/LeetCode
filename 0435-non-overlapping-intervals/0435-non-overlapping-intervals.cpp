@@ -8,14 +8,14 @@ public:
         int i;
         int count=0;
         for(i=1;i<n;i++){
-            if(intervals[i][0]<temp)
+            if(temp<=intervals[i][0])
             {
-                count++;
-                temp = min(temp,intervals[i][1]);
+                temp = intervals[i][1];
             }
             else
             {
-                temp = intervals[i][1];
+                count++;
+                temp = min(temp,intervals[i][1]);
             }
         }
         
