@@ -1,5 +1,20 @@
 class Solution {
 public:
+    bool solve(string& temp, int left, int right){
+        
+        if(left>right){
+            return 1;
+        }
+        if(temp[left]==temp[right]){
+            left++;
+            right--;
+        }
+        else{
+            return 0;
+        }
+        
+        return solve(temp,left++,right--);
+    }
     bool isPalindrome(string s) {
         string temp;
         int n = s.length();
@@ -15,18 +30,20 @@ public:
                 }
             }
         }
-        bool ans =true;
+        bool ans = false;
         int left=0,right = temp.length()-1;
-        while(left<=right){
-            if(temp[left]==temp[right]){
-                left++;
-                right--;
-            }
-            else{
-                ans = false;
-                return ans;
-            }
-        }
-        return ans;
+        bool a = solve(temp,left,right);
+        // int left=0,right = temp.length()-1;
+        // while(left<=right){
+        //     if(temp[left]==temp[right]){
+        //         left++;
+        //         right--;
+        //     }
+        //     else{
+        //         ans = false;
+        //         return ans;
+        //     }
+        // }
+        return a;
     }
 };
