@@ -1,37 +1,32 @@
 class Solution {
 public:
     bool isPalindrome(string s) {
-        vector<char>ans;
+        string temp;
+        int n = s.length();
         int i;
-        for(i=0;s[i]!='\0';i++)
-        {
-            if(s[i]>=65 && s[i]<=90)
-            {
-                s[i] = s[i] + 32;
-                ans.push_back(s[i]);
-            }
-            else if((s[i]>='a' && s[i]<='z') || (s[i]>='0' && s[i]<='9'))
-            {
-                ans.push_back(s[i]);
+        for(i=0;i<n;i++){
+            if((s[i]>='A' && s[i]<='Z') || (s[i]>='a' && s[i]<='z') || (s[i]>='0' && s[i]<='9')){
+                if(s[i]>='A' && s[i]<='Z'){
+                    s[i] = s[i] + 32;
+                    temp.push_back(s[i]);
+                }
+                else{
+                    temp.push_back(s[i]);
+                }
             }
         }
-        
-        int left=0,right=ans.size()-1;
-        while(left<=right)
-        {
-            if(ans[left]==ans[right])
-            {
+        bool ans =true;
+        int left=0,right = temp.length()-1;
+        while(left<=right){
+            if(temp[left]==temp[right]){
                 left++;
                 right--;
             }
-            else
-            {
-                left++;
-                right--;
-                return false;
+            else{
+                ans = false;
+                return ans;
             }
         }
-        return true;
-        
+        return ans;
     }
 };
