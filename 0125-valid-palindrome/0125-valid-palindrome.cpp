@@ -1,49 +1,40 @@
 class Solution {
 public:
-    bool solve(string& temp, int left, int right){
-        
+    bool solve(string& ans, int left, int right){
+        bool check = true;
         if(left>right){
-            return 1;
+            check = true;
+            return check;
         }
-        if(temp[left]==temp[right]){
-            left++;
-            right--;
+        if(ans[left]!=ans[right]){
+            check = false;
+            return check;
         }
-        else{
-            return 0;
-        }
+        return solve(ans,left+=1,right-=1);
         
-        return solve(temp,left++,right--);
     }
+    
     bool isPalindrome(string s) {
-        string temp;
-        int n = s.length();
-        int i;
+        string ans;
+        int i,n=s.length();
         for(i=0;i<n;i++){
-            if((s[i]>='A' && s[i]<='Z') || (s[i]>='a' && s[i]<='z') || (s[i]>='0' && s[i]<='9')){
-                if(s[i]>='A' && s[i]<='Z'){
+            if((s[i]>='A' && s[i]<='Z') || (s[i]>='a' && s[i]<='z') || (s[i]>='0' && s[i]<='9'))
+            {
+                if(s[i]>='A' && s[i]<='Z')
+                {
                     s[i] = s[i] + 32;
-                    temp.push_back(s[i]);
+                    ans.push_back(s[i]);
                 }
                 else{
-                    temp.push_back(s[i]);
+                    ans.push_back(s[i]);
                 }
             }
         }
-        bool ans = false;
-        int left=0,right = temp.length()-1;
-        bool a = solve(temp,left,right);
-        // int left=0,right = temp.length()-1;
-        // while(left<=right){
-        //     if(temp[left]==temp[right]){
-        //         left++;
-        //         right--;
-        //     }
-        //     else{
-        //         ans = false;
-        //         return ans;
-        //     }
-        // }
-        return a;
+        
+        if(solve(ans,0,ans.length()-1)){
+            return true;
+        }
+        return false;
+        
     }
 };
